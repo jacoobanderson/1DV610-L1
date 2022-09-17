@@ -10,7 +10,7 @@ export class InterfaceCreator {
 
   start() {
     this.#createMenu()
-    this.#promptUser()
+    this.#handleInput(this.#promptUser())
   }
 
   #createMenu() {
@@ -30,6 +30,11 @@ export class InterfaceCreator {
   #promptUser() {
     const readInput = prompt()
     return readInput()
+  }
+
+  #handleInput(input) {
+    const action = this.#menuFunctionality[input]
+    action()
   }
 
   //method that gets input
