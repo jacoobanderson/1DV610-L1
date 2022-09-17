@@ -24,9 +24,9 @@ ui.setMenu({
 })
 
 ui.setMenuFunctionality({
-    1: testFuncOne(1, 5),
-    2: testFuncTwo(5, 4),
-    3: testFuncThree(5, 5)
+    1: () => testFuncOne(1, 5),
+    2: () => testFuncTwo(5, 4),
+    3: () => testFuncThree(5, 5)
 })
 
 ui.start()

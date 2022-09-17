@@ -1,3 +1,6 @@
+import readline from 'readline'
+import prompt from 'prompt-sync'
+
 export class InterfaceCreator {
   #menu
   #menuFunctionality
@@ -7,6 +10,7 @@ export class InterfaceCreator {
 
   start() {
     this.#createMenu()
+    this.#promptUser()
   }
 
   #createMenu() {
@@ -23,9 +27,10 @@ export class InterfaceCreator {
     this.#menuFunctionality = menuFunctionality
   }
 
-  // getInput() {
-
-  // }
+  #promptUser() {
+    const readInput = prompt()
+    return readInput()
+  }
 
   //method that gets input
   //intromessage
