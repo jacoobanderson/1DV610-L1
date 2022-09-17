@@ -1,5 +1,6 @@
 export class InterfaceCreator {
   #menu
+  #menuFunctionality
   // private name?
   // menuColor
   // introColor
@@ -17,6 +18,11 @@ export class InterfaceCreator {
   setMenu(menuOptions) {
     this.#menu = menuOptions
   }
+
+  setMenuFunctionality(menuFunctionality) {
+    this.#menuFunctionality = menuFunctionality
+  }
+
   // getInput() {
 
   // }
