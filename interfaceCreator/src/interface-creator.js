@@ -1,17 +1,33 @@
-import readline from 'readline'
 import prompt from 'prompt-sync'
 
 export class InterfaceCreator {
   #menu
   #menuFunctionality
+  #user
   // private name?
   // menuColor
   // introColor
 
   start() {
     this.#createMenu()
-    this.#handleInput(this.#promptUser())
+    const input = this.#promptUser()
+    this.#handleMenuInput(input)
   }
+
+  createPrompt(message, functionality) {
+    console.log(message)
+    const input = this.#promptUser()
+    functionality(input)
+  }
+
+  setMenu(menuOptions) {
+    this.#menu = menuOptions
+  }
+
+  assignMenuFunctionality(menuFunctionality) {
+    this.#menuFunctionality = menuFunctionality
+  }
+
 
   #createMenu() {
     for (const [key, value] of Object.entries(this.#menu)) {
@@ -19,22 +35,16 @@ export class InterfaceCreator {
     }
   }
 
-  setMenu(menuOptions) {
-    this.#menu = menuOptions
-  }
-
-  setMenuFunctionality(menuFunctionality) {
-    this.#menuFunctionality = menuFunctionality
-  }
-
   #promptUser() {
     const readInput = prompt()
     return readInput()
   }
 
-  #handleInput(input) {
+  #handleMenuInput(input) {
     const action = this.#menuFunctionality[input]
-    action()
+    if (action) {
+        action()
+    }
   }
 
   //method that gets input

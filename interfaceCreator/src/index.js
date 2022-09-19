@@ -17,13 +17,17 @@ function testFuncThree (num1, num2) {
 
 const ui = new InterfaceCreator()
 
+// ui.setInitialMessage('MESSAGE', true) Sets the message and if true it prompts for username and Greets the user.
+// ui.createPrompt('', function)
+
+ui.createPrompt('What is your name', (user) => console.log('Welcome, ' + user))
 ui.setMenu({
     1: 'Add scores',
     2: 'Calculate sum',
     3: 'Calculate average'
 })
 
-ui.setMenuFunctionality({
+ui.assignMenuFunctionality({
     1: () => testFuncOne(1, 5),
     2: () => testFuncTwo(5, 4),
     3: () => testFuncThree(5, 5)
