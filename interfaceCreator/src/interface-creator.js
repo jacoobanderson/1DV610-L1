@@ -1,9 +1,8 @@
-import prompt from 'prompt-sync'
+import prompt from "prompt-sync"
 
 export class InterfaceCreator {
   #menu
   #menuFunctionality
-  #user
   // private name?
   // menuColor
   // introColor
@@ -28,10 +27,13 @@ export class InterfaceCreator {
     this.#menuFunctionality = menuFunctionality
   }
 
-
   #createMenu() {
-    for (const [key, value] of Object.entries(this.#menu)) {
-      console.log(key + ". " + value + ".")
+    try {
+      for (const [key, value] of Object.entries(this.#menu)) {
+        console.log(key + ". " + value + ".")
+      }
+    } catch (error) {
+        console.log('No menu has been created.')
     }
   }
 
@@ -41,9 +43,13 @@ export class InterfaceCreator {
   }
 
   #handleMenuInput(input) {
-    const action = this.#menuFunctionality[input]
-    if (action) {
+    try {
+      const action = this.#menuFunctionality[input]
+      if (action) {
         action()
+      }
+    } catch (error) {
+      console.log("No menu functionality has been assigned.")
     }
   }
 
