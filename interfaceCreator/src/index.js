@@ -20,8 +20,9 @@ const ui = new InterfaceCreator()
 // ui.setInitialMessage('MESSAGE', true) Sets the message and if true it prompts for username and Greets the user.
 // ui.createPrompt('', function)
 
-ui.createPrompt('What is your name', (user) => console.log('Welcome, ' + user), 'blue')
+ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user), 'blue')
 
+ui.addExitOption()
 
 ui.setMenu({
     1: 'Add scores',
@@ -36,5 +37,6 @@ ui.assignMenuFunctionality({
 })
 
 ui.setColor('menu', 'red')
+ui.setColor('exit', 'cyan')
 
 ui.start()

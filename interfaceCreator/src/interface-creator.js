@@ -1,11 +1,13 @@
 import prompt from "prompt-sync"
+import process from 'node:process'
 
 export class InterfaceCreator {
   #menu
   #menuFunctionality
   #menuColor
-  #menuFunctionalityColor
-  #promptColor
+  #exitOption
+  #exitColor
+  #returnToMenuOption
 
   // private name?
   // colorCode
@@ -14,8 +16,13 @@ export class InterfaceCreator {
   start() {
     if (this.#menu) {
       this.#createMenu()
+      if (this.#exitOption) this.#showExitMessage()
+
       const input = this.#promptUser()
+
+      if (this.#exitOption) this.#exitApplication(input)
       this.#handleMenuInput(input)
+
     }
   }
 
@@ -30,10 +37,33 @@ export class InterfaceCreator {
   }
 
   setColor(section, color) {
-    if (section.toLowerCase() === 'menu') {
+    section.toLowerCase()
+    if (section === 'menu') {
         const colorCode = this.#getColorCode(color)
         this.#menuColor = colorCode
+    }
+    if (section === 'exit') {
+        const colorCode = this.#getColorCode(color)
+        this.#exitColor = colorCode
     } 
+  }
+
+  addExitOption() {
+    this.#exitOption = true
+  }
+
+  #showExitMessage() {
+    if (this.#exitColor) {
+        console.log(this.#exitColor, 'To exit the program enter Q')
+    } else {
+        console.log('To exit the program enter Q')
+    }
+  }
+
+  #exitApplication(input) {
+    if (input === 'q') {
+        process.exit(0)
+    }
   }
 
   #getColorCode(color) {
@@ -54,7 +84,7 @@ export class InterfaceCreator {
         colorCode = "\x1b[34m%s\x1b[0m"
         break
       case "cyan":
-        colorCode = "\x1b[44m%s\x1b[0m"
+        colorCode = "\x1b[36m%s\x1b[0m"
         break
       default:
         colorCode = "\x1b[37m%s\x1b[0m"
@@ -96,11 +126,4 @@ export class InterfaceCreator {
       console.log("No menu functionality has been assigned.")
     }
   }
-
-  //method that gets input
-  //intromessage
-  //getusername
-  //exit
-  //setcolor
-  //submenus?
 }
