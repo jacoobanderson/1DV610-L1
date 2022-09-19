@@ -6,6 +6,7 @@ export class InterfaceCreator {
   #menuColor
   #menuFunctionalityColor
   #promptColor
+
   // private name?
   // colorCode
   // introColor
@@ -18,8 +19,8 @@ export class InterfaceCreator {
     }
   }
 
-  createPrompt(message, functionality) {
-    console.log(message)
+  createPrompt(message, functionality, color) {
+    console.log(this.#getColorCode(color), message)
     const input = this.#promptUser()
     functionality(input)
   }
@@ -35,30 +36,28 @@ export class InterfaceCreator {
     } 
   }
 
-
-
   #getColorCode(color) {
     color.toLowerCase()
     let colorCode;
 
     switch (color) {
       case "red":
-        colorCode = "\x1b[31m"
+        colorCode = "\x1b[31m%s\x1b[0m"
         break
       case "green":
-        colorCode = "\x1b[32m"
+        colorCode = "\x1b[32m%s\x1b[0m"
         break
       case "yellow":
-        colorCode = "\x1b[33m"
+        colorCode = "\x1b[33m%s\x1b[0m"
         break
       case "blue":
-        colorCode = "\x1b[34m"
+        colorCode = "\x1b[34m%s\x1b[0m"
         break
       case "cyan":
-        colorCode = "\x1b[44m"
+        colorCode = "\x1b[44m%s\x1b[0m"
         break
       default:
-        colorCode = "\x1b[37m"
+        colorCode = "\x1b[37m%s\x1b[0m"
         break
     }
     return colorCode
@@ -72,7 +71,7 @@ export class InterfaceCreator {
     try {
       for (const [key, value] of Object.entries(this.#menu)) {
         if (this.#menuColor) {
-            console.log(this.#menuColor + '%s\x1b[0m', key + ". " + value + ".")
+            console.log(this.#menuColor, + key + ". " + value + ".")
         } else {
             console.log(key + ". " + value + ".")
         }
