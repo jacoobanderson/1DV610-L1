@@ -21,6 +21,9 @@ const ui = new InterfaceCreator()
 // ui.createPrompt('', function)
 
 ui.createPrompt('What is your name', (user) => console.log('Welcome, ' + user))
+
+ui.setColor('menu', 'blue')
+
 ui.setMenu({
     1: 'Add scores',
     2: 'Calculate sum',
