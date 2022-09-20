@@ -52,6 +52,10 @@ export class InterfaceCreator {
     this.#exitOption = true
   }
 
+  addReturnToMenuOption() {
+    this.#returnToMenuOption = true
+  }
+
   #showExitMessage() {
     if (this.#exitColor) {
         console.log(this.#exitColor, 'To exit the program enter Q')
