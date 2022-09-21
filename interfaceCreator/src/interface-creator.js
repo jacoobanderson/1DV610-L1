@@ -23,8 +23,7 @@ export class InterfaceCreator {
       if (this.#exitOption) {
         this.#exitApplication(input)
       }
-
-      this.#handleMenuInput(input)
+      this.#handleMenuInput(this.#menuFunctionality, input)
     }
   }
 
@@ -38,6 +37,14 @@ export class InterfaceCreator {
     this.#menu = menuOptions
   }
 
+  createSubMenu(view, functionality) {
+    for (const [key, value] of Object.entries(view)) {
+        console.log(key + ". " + value + ".")
+    }
+    const input = this.#promptUser()
+    this.#handleMenuInput(functionality, input)
+  }
+
   setColor(section, color) {
     section.toLowerCase()
     if (section === "menu") {
@@ -49,8 +56,8 @@ export class InterfaceCreator {
       this.#exitColor = colorCode
     }
     if (section === "returnToMenu") {
-        const colorCode = this.#getColorCode(color)
-        this.#returnToMenuColor = colorCode
+      const colorCode = this.#getColorCode(color)
+      this.#returnToMenuColor = colorCode
     }
   }
 
@@ -137,20 +144,23 @@ export class InterfaceCreator {
 
   #showReturnToMenuAndExitOption() {
     if (this.#returnToMenuColor) {
-        console.log(this.#returnToMenuColor, "\nTo return to the main menu press enter.")
-        console.log(this.#returnToMenuColor, "To exit the application enter Q.")
+      console.log(
+        this.#returnToMenuColor,
+        "\nTo return to the main menu press enter."
+      )
+      console.log(this.#returnToMenuColor, "To exit the application enter Q.")
     } else {
-
+      console.log("\nTo return to the main menu press enter.")
+      console.log("To exit the application enter Q.")
     }
   }
 
-  #handleMenuInput(input) {
+  #handleMenuInput(menuFunctionalityObject, userInput) {
     try {
-      const action = this.#menuFunctionality[input]
-      if (action) {
-        action()
+      const menuFunctionToCall = menuFunctionalityObject[userInput]
+      if (menuFunctionToCall) {
+        menuFunctionToCall()
       }
-
       if (this.#returnToMenuOption) {
         this.#showReturnToMenuAndExitOption()
         this.#returnToMainMenu()
