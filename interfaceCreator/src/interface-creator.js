@@ -8,17 +8,22 @@ export class InterfaceCreator {
   #exitOption
   #exitColor
   #returnToMenuOption
+  #returnToMenuColor
 
   start() {
     if (this.#menu) {
       this.#createMenu()
-      if (this.#exitOption) this.#showExitMessage()
+
+      if (this.#exitOption) {
+        this.#showExitMessage()
+      }
 
       const input = this.#promptUser()
 
       if (this.#exitOption) {
         this.#exitApplication(input)
       }
+
       this.#handleMenuInput(input)
     }
   }
@@ -42,6 +47,10 @@ export class InterfaceCreator {
     if (section === "exit") {
       const colorCode = this.#getColorCode(color)
       this.#exitColor = colorCode
+    }
+    if (section === "returnToMenu") {
+        const colorCode = this.#getColorCode(color)
+        this.#returnToMenuColor = colorCode
     }
   }
 
@@ -127,8 +136,12 @@ export class InterfaceCreator {
   }
 
   #showReturnToMenuAndExitOption() {
-    console.log("\nTo return to the main menu press enter.")
-    console.log("To exit the application enter Q.")
+    if (this.#returnToMenuColor) {
+        console.log(this.#returnToMenuColor, "\nTo return to the main menu press enter.")
+        console.log(this.#returnToMenuColor, "To exit the application enter Q.")
+    } else {
+
+    }
   }
 
   #handleMenuInput(input) {
