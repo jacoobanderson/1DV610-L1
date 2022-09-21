@@ -1,5 +1,5 @@
 import prompt from "prompt-sync"
-import process from 'node:process'
+import process from "node:process"
 
 export class InterfaceCreator {
   #menu
@@ -9,10 +9,6 @@ export class InterfaceCreator {
   #exitColor
   #returnToMenuOption
 
-  // private name?
-  // colorCode
-  // introColor
-
   start() {
     if (this.#menu) {
       this.#createMenu()
@@ -20,9 +16,10 @@ export class InterfaceCreator {
 
       const input = this.#promptUser()
 
-      if (this.#exitOption) this.#exitApplication(input)
+      if (this.#exitOption) {
+        this.#exitApplication(input)
+      }
       this.#handleMenuInput(input)
-
     }
   }
 
@@ -38,14 +35,14 @@ export class InterfaceCreator {
 
   setColor(section, color) {
     section.toLowerCase()
-    if (section === 'menu') {
-        const colorCode = this.#getColorCode(color)
-        this.#menuColor = colorCode
+    if (section === "menu") {
+      const colorCode = this.#getColorCode(color)
+      this.#menuColor = colorCode
     }
-    if (section === 'exit') {
-        const colorCode = this.#getColorCode(color)
-        this.#exitColor = colorCode
-    } 
+    if (section === "exit") {
+      const colorCode = this.#getColorCode(color)
+      this.#exitColor = colorCode
+    }
   }
 
   addExitOption() {
@@ -58,21 +55,21 @@ export class InterfaceCreator {
 
   #showExitMessage() {
     if (this.#exitColor) {
-        console.log(this.#exitColor, 'To exit the program enter Q')
+      console.log(this.#exitColor, "To exit the program enter Q")
     } else {
-        console.log('To exit the program enter Q')
+      console.log("To exit the program enter Q")
     }
   }
 
   #exitApplication(input) {
-    if (input === 'q') {
-        process.exit(0)
+    if (input === "q") {
+      process.exit(0)
     }
   }
 
   #getColorCode(color) {
     color.toLowerCase()
-    let colorCode;
+    let colorCode
 
     switch (color) {
       case "red":
@@ -105,9 +102,9 @@ export class InterfaceCreator {
     try {
       for (const [key, value] of Object.entries(this.#menu)) {
         if (this.#menuColor) {
-            console.log(this.#menuColor, + key + ". " + value + ".")
+          console.log(this.#menuColor, +key + ". " + value + ".")
         } else {
-            console.log(key + ". " + value + ".")
+          console.log(key + ". " + value + ".")
         }
       }
     } catch (error) {
@@ -120,11 +117,30 @@ export class InterfaceCreator {
     return readInput()
   }
 
+  #returnToMainMenu() {
+    const input = this.#promptUser()
+    input.toLowerCase()
+    this.#exitApplication(input)
+    if (!input) {
+      this.start()
+    }
+  }
+
+  #showReturnToMenuAndExitOption() {
+    console.log("\nTo return to the main menu press enter.")
+    console.log("To exit the application enter Q.")
+  }
+
   #handleMenuInput(input) {
     try {
       const action = this.#menuFunctionality[input]
       if (action) {
         action()
+      }
+
+      if (this.#returnToMenuOption) {
+        this.#showReturnToMenuAndExitOption()
+        this.#returnToMainMenu()
       }
     } catch (error) {
       console.log("No menu functionality has been assigned.")

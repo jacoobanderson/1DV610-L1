@@ -39,4 +39,5 @@ ui.assignMenuFunctionality({
 ui.setColor('menu', 'red')
 ui.setColor('exit', 'cyan')
 
+ui.addReturnToMenuOption()
 ui.start()
