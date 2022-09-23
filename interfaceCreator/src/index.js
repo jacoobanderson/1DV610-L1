@@ -40,7 +40,7 @@ ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user +
 
 ui.addExitOption()
 
-ui.setMenu({
+ui.setMainMenu({
     1: 'Add scores',
     2: 'Calculate sum',
     3: 'Calculate average'
@@ -59,7 +59,7 @@ const functionality = {
     3: () => testFuncThreeSub(23, 34)
 }
 
-ui.assignMenuFunctionality({
+ui.assignMainMenuFunctionality({
     1: () => ui.createSubMenu(view, functionality),
     2: () => testFuncTwo(5, 4),
     3: () => testFuncThree(5, 5)
@@ -70,4 +70,5 @@ ui.setColor('exit', 'cyan')
 ui.setColor('returnToMenu', 'blue')
 
 ui.addReturnToMenuOption()
+
 ui.start()

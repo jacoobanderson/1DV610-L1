@@ -33,13 +33,13 @@ export class InterfaceCreator {
     functionality(input)
   }
 
-  setMenu(menuOptions) {
+  setMainMenu(menuOptions) {
     this.#menu = menuOptions
   }
 
   createSubMenu(view, functionality) {
     for (const [key, value] of Object.entries(view)) {
-        console.log(key + ". " + value + ".")
+      console.log(key + ". " + value + ".")
     }
     const input = this.#promptUser()
     this.#handleMenuInput(functionality, input)
@@ -110,7 +110,7 @@ export class InterfaceCreator {
     return colorCode
   }
 
-  assignMenuFunctionality(menuFunctionality) {
+  assignMainMenuFunctionality(menuFunctionality) {
     this.#menuFunctionality = menuFunctionality
   }
 
