@@ -9,6 +9,7 @@ export class InterfaceCreator {
   #exitColor
   #returnToMenuOption
   #returnToMenuColor
+  formData
 
   start() {
     if (this.#menu) {
@@ -26,6 +27,30 @@ export class InterfaceCreator {
       this.#handleMenuInput(this.#menuFunctionality, input)
     }
   }
+
+  #isObjectOrString(element) {
+    if (typeof element === 'string') {
+        return false
+    }
+    return true
+  }
+
+  createForm(questions) {
+    
+  }
+
+// createForm([
+//     'What is your name?',
+//     'How old are you?',
+//     {}
+// ])
+//   What is your name?
+//   -input
+//   How old are you?
+//   -input
+// Store the inputs in variable and then return it? allows the developer to use inputs instead of storing in file.
+
+// storeFormDataInFile()
 
   createPrompt(message, functionality, color) {
     console.log(this.#getColorCode(color), message)
