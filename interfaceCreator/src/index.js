@@ -6,8 +6,14 @@ function testFuncOne (num1, num2) {
 }
 
 // Test function 2
-function testFuncTwo (num1, num2) {
-    console.log(num1 - num2)
+async function testFuncTwo () {
+    await ui.createForm([
+        'What is your name?',
+        'What is your cats name?',
+        {
+           'Which country do you live in?': ['Sweden', 'Norway', 'Denmark'] 
+        }
+    ])
 }
 
 // Test function 3
@@ -38,6 +44,10 @@ const ui = new InterfaceCreator()
 
 ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')
 
+
+// ASYNC NEEDS AWAIT
+await testFuncTwo()
+
 ui.addExitOption()
 
 ui.setMainMenu({
@@ -55,13 +65,13 @@ const view = {
 
 const functionality = {
     1: () => testFuncOneSub(1, 3),
-    2: () => testFuncTwoSub(5, 9),
+    2: async () => await testFuncTwo(),
     3: () => testFuncThreeSub(23, 34)
 }
 
 ui.assignMainMenuFunctionality({
     1: () => ui.createSubMenu(view, functionality),
-    2: () => testFuncTwo(5, 4),
+    2: async () => await testFuncTwo(),
     3: () => testFuncThree(5, 5)
 })
 

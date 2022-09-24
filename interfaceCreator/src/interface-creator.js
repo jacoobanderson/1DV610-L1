@@ -29,28 +29,48 @@ export class InterfaceCreator {
   }
 
   #isObjectOrString(element) {
-    if (typeof element === 'string') {
-        return false
+    if (typeof element === "string") {
+      return false
     }
     return true
   }
 
-  createForm(questions) {
-    
+  #promptUserWaitForInput() {
+    return new Promise((resolve) => {
+      const input = this.#promptUser()
+      resolve(input)
+    })
   }
 
-// createForm([
-//     'What is your name?',
-//     'How old are you?',
-//     {}
-// ])
-//   What is your name?
-//   -input
-//   How old are you?
-//   -input
-// Store the inputs in variable and then return it? allows the developer to use inputs instead of storing in file.
+  async createForm(questions) {
+    const answers = {}
 
-// storeFormDataInFile()
+    for (let i = 0; i < questions.length; i++) {
+      if (this.#isObjectOrString(questions[i])) {
+        console.log(questions[i])
+        const input = await this.#promptUserWaitForInput()
+        answers[questions[i]] = await input
+        console.log(answers)
+      } else {
+        console.log(questions[i])
+        const input = await this.#promptUserWaitForInput()
+        answers[questions[i]] = await input
+      }
+    }
+  }
+
+  // createForm([
+  //     'What is your name?',
+  //     'How old are you?',
+  //     {}
+  // ])
+  //   What is your name?
+  //   -input
+  //   How old are you?
+  //   -input
+  // Store the inputs in variable and then return it? allows the developer to use inputs instead of storing in file.
+
+  // storeFormDataInFile()
 
   createPrompt(message, functionality, color) {
     console.log(this.#getColorCode(color), message)
