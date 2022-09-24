@@ -1,5 +1,6 @@
 import { InterfaceCreator } from "./interface-creator.js";
 
+const ui = new InterfaceCreator()
 // Test function 1
 function testFuncOne (num1, num2) {
     console.log(num1 + num2)
@@ -36,8 +37,6 @@ function testFuncTwoSub (num1, num2) {
 function testFuncThreeSub (num1, num2) {
     console.log(num1 * num2)
 }
-
-const ui = new InterfaceCreator()
 
 // ui.setInitialMessage('MESSAGE', true) Sets the message and if true it prompts for username and Greets the user.
 // ui.createPrompt('', function)

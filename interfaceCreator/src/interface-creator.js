@@ -86,6 +86,10 @@ export class InterfaceCreator {
     for (const [key, value] of Object.entries(view)) {
       console.log(key + ". " + value + ".")
     }
+    if (this.#returnToMenuOption) {
+      this.#showReturnToMenuAndExitOption()
+      this.#returnToMainMenu()
+    }
     const input = this.#promptUser()
     this.#handleMenuInput(functionality, input)
   }
@@ -205,10 +209,6 @@ export class InterfaceCreator {
       const menuFunctionToCall = menuFunctionalityObject[userInput]
       if (menuFunctionToCall) {
         menuFunctionToCall()
-      }
-      if (this.#returnToMenuOption) {
-        this.#showReturnToMenuAndExitOption()
-        this.#returnToMainMenu()
       }
     } catch (error) {
       console.log("No menu functionality has been assigned.")
