@@ -42,12 +42,23 @@ export class InterfaceCreator {
     })
   }
 
+  #handleFormInput(alternatives, input) {
+    
+  }
+
   async createForm(questions) {
     const answers = {}
 
     for (let i = 0; i < questions.length; i++) {
       if (this.#isObjectOrString(questions[i])) {
-        console.log(questions[i])
+        const question = Object.keys(questions[i])[0]
+        const arrayOfAlternatives = Object.values(questions[i])[0]
+        console.log(question)
+
+        arrayOfAlternatives.forEach((element, index) => {
+          console.log((index + 1) + '. ' + element)
+        })
+
         const input = await this.#promptUserWaitForInput()
         answers[questions[i]] = await input
         console.log(answers)
@@ -58,17 +69,6 @@ export class InterfaceCreator {
       }
     }
   }
-
-  // createForm([
-  //     'What is your name?',
-  //     'How old are you?',
-  //     {}
-  // ])
-  //   What is your name?
-  //   -input
-  //   How old are you?
-  //   -input
-  // Store the inputs in variable and then return it? allows the developer to use inputs instead of storing in file.
 
   // storeFormDataInFile()
 
