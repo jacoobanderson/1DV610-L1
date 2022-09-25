@@ -55,15 +55,13 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 ​
 | Vad testas      | input | output | utfall PASS/FAIL |
 | --------- | --------- | ------ | ------- |
-|  Skapa prompt med meddelande, färg och användning av svar.         |  1. ```javascript ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')```</br> 2. Kör npm start i terminalen.</br>  3. Skriv in namnet Karl </br> 4. Klicka enter.         | Frågan "What is your name?" ska visas, användaren ska kunna skiva in sitt namn, efter inskrivet namn ska "Welcome, Karl" i blå färg visas.       |    PASS     |
-|   Lägga till exit alternativ        |    1. Lägg till ```javascript ui.addExitOption()``` och ```javascript ui.start()``` efter i koden. </br> 2. Kör npm start i terminalen </br> 3. Skriv Q och klicka enter     |    Längst ned i huvudmenyn ska det finnas "To exit the program enter Q" och när q har skrivits in ska programmet avslutas.   |    PASS     |
-|  Skapa huvudmeny vy         |   1. Lägg till ```javascript ui.setMainMenu({1: 'Add', 2: 'Subtract', 3: 'Divide', 4: 'Multiply'})``` och ```javascript ui.start()``` i koden. </br> 2. Kör npm start i terminalen.       |  Menyn ska visas och ska bestå av 1. Add, 2. Subtract, 3. Divide och 4. Multiply.      |    PASS     |
-|           |           |        |         |
+| **TC1** Skapa prompt med meddelande, färg och användning av svar.         |  1. ```ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')```</br> 2. Kör npm start i terminalen.</br>  3. Skriv in namnet Karl </br> 4. Klicka enter.         | Frågan "What is your name?" ska visas, användaren ska kunna skiva in sitt namn, efter inskrivet namn ska "Welcome, Karl" i blå färg visas.       |    PASS     |
+| **TC2**  Lägga till exit alternativ        |    1. Lägg till ```ui.addExitOption()``` och ```ui.start()``` efter i koden. </br> 2. Kör npm start i terminalen </br> 3. Skriv Q och klicka enter     |    Längst ned i huvudmenyn ska det finnas "To exit the program enter Q" och när q har skrivits in ska programmet avslutas.   |    PASS     |
+|  **TC3** Skapa huvudmeny vy         |   1. Lägg till ```ui.setMainMenu({1: 'Add', 2: 'Subtract', 3: 'Divide', 4: 'Multiply'})``` och ```ui.start()``` i koden. </br> 2. Kör npm start i terminalen.       |  Menyn ska visas och ska bestå av 1. Add, 2. Subtract, 3. Divide och 4. Multiply.      |    PASS     |
+|  Lägg till funktionalitet i menyn         |  1. TC3 </br> 2. Lägg till koden ```assignMainMenuFunctionality({1: () => console.log('addFunction')})``` före ``` ui.start() ``` </br> 3. Kör npm start i terminalen. </br> 4. Skriv "1" och klicka enter.       |   Meddelandet "addFunction" ska visas    |   PASS      |
 |           |           |        |         |
 |           |           |        |         |
 
-​
-​
 ## Kodkvalitetskrav
 ​
 **Fetmarkera** de "regler" som används ur CC. Ni kan frångå tabellformat om ni vill. Skapa direktlänkar till er kod där det är lämpligt. Skriv så att jag kan förstå.
