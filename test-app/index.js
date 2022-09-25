@@ -1,70 +1,81 @@
 import { InterfaceCreator } from '@jacoobanderson/interface-creator'
+import prompt from "prompt-sync"
 
 const ui = new InterfaceCreator()
 
-function testFuncOne (num1, num2) {
-  console.log(num1 + num2)
+let user
+
+function promptUser() {
+  const readInput = prompt()
+  return readInput()
 }
 
-// Creates form and returns answers
 async function form() {
-  return await ui.createForm([
-    'What is your name?',
-    'What is your cats name?',
-    // Question with multi choice answers.
-    {
-      'Which country do you live in?': ['Sweden', 'Norway', 'Denmark']
-    }
-  ])
+  return new Promise((resolve) => {
+    const userAnswers = ui.createForm([
+      'What is your name?',
+      'How old are you?',
+      {
+        'Which country do you live in?': ['Sweden', 'Norway', 'Denmark']
+      }
+    ])
+    resolve(userAnswers)
+    user = userAnswers
+  })
 }
 
-function testFuncThree (num1, num2) {
-  console.log(num1 * num2)
+async function showUser() {
+  const resolvedUser = await user
+  console.log('Name: ' + Object.values(resolvedUser)[0])
+  console.log('Age: ' + Object.values(resolvedUser)[1])
+  console.log('Country: ' + Object.values(resolvedUser)[2])
 }
 
-function testFuncOneSub (num1, num2) {
-  console.log(num1 + num2)
+
+function addAThousand () {
+  console.log('Enter your number:')
+  const numberOne = promptUser()
+  console.log(parseInt(numberOne) + 1000)
 }
 
-function testFuncTwoSub (num1, num2) {
-  console.log(num1 - num2)
+function subtractByAThousand () {
+  console.log('Enter your number:')
+  const numberOne = promptUser()
+  console.log(parseInt(numberOne) - 1000)
 }
 
-function testFuncThreeSub (num1, num2) {
-  console.log(num1 * num2)
+function multiplyByAThousand () {
+  console.log('Enter your number:')
+  const numberOne = promptUser()
+  console.log(parseInt(numberOne) * 1000)
 }
 
 ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')
 
-// ASYNC NEEDS AWAIT
-const data = await form()
-// Shows the form data.
-console.log(data)
-
 ui.addExitOption()
 
 ui.setMainMenu({
-  1: 'Add scores',
-  2: 'Calculate sum',
-  3: 'Calculate average'
+  1: 'Register user',
+  2: 'Calculator',
+  3: 'Show current user'
 })
 
 const view = {
-  1: 'Register values',
-  2: 'Calculate mean',
-  3: 'Calculate median'
+  1: 'Add',
+  2: 'Subtract',
+  3: 'Multiply'
 }
 
 const functionality = {
-  1: () => testFuncOneSub(1, 3),
-  2: async () => await testFuncTwo(),
-  3: () => testFuncThreeSub(23, 34)
+  1: () => addAThousand(),
+  2: () => subtractByAThousand(),
+  3: () => multiplyByAThousand()
 }
 
 ui.assignMainMenuFunctionality({
-  1: () => ui.createSubMenu(view, functionality),
-  2: async () => await testFuncTwo(),
-  3: () => testFuncThree(5, 5)
+  1: async () => await form(),
+  2: () => ui.createSubMenu(view, functionality),
+  3: async () => await showUser()
 })
 
 ui.setColor('menu', 'red')

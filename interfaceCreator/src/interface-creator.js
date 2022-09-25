@@ -117,6 +117,7 @@ export class InterfaceCreator {
         answers[questions[i]] = await input
       }
     }
+    this.start()
     return answers
   }
 
@@ -158,7 +159,7 @@ export class InterfaceCreator {
     if (this.#returnToMenuOption) {
       this.#showReturnToMenuAndExitOption()
     }
-    
+
     const input = this.#promptUser()
 
     if (this.#returnToMenuOption) {

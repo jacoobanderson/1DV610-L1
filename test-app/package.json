@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jacoobanderson/interface-creator": "^1.0.1"
+    "@jacoobanderson/interface-creator": "^1.0.1",
+    "prompt-sync": "^4.2.0"
   }
 }
