@@ -88,6 +88,25 @@ This is a list of the different methods that are offered:
 ```
 
 ```javascript
+// Creates form and returns answers
+async function form() {
+  return await ui.createForm([
+    'What is your name?',
+    'What is your cats name?',
+    // Question with multi choice answers.
+    {
+      'Which country do you live in?': ['Sweden', 'Norway', 'Denmark']
+    }
+  ])
+}
+
+const data = await form()
+// Shows the form data.
+console.log(data)
+
+```
+
+```javascript
     ui.setColor('form', 'blue') 
 ```
 

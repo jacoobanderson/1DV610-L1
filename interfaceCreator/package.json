@@ -1,9 +1,19 @@
 {
   "name": "@jacoobanderson/interface-creator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A module that helps in creating a terminal user interface",
   "main": "src/interface-creator.js",
   "type": "module",
+  "keywords": [
+    "menu",
+    "submenu",
+    "user interface",
+    "terminal user interface",
+    "create menu",
+    "create ui",
+    "ui",
+    "terminal ui"
+  ],
   "directories": {
     "test": "test"
   },
