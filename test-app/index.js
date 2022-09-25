@@ -17,7 +17,10 @@ async function form() {
       'How old are you?',
       {
         'Which country do you live in?': ['Sweden', 'Norway', 'Denmark']
-      }
+      },
+      {
+        'What is your favorit pet?': ['Dog', 'Cat']
+      },
     ])
     resolve(userAnswers)
     user = userAnswers
@@ -30,6 +33,7 @@ async function showUser() {
     console.log('Name: ' + Object.values(resolvedUser)[0])
     console.log('Age: ' + Object.values(resolvedUser)[1])
     console.log('Country: ' + Object.values(resolvedUser)[2])
+    console.log('Favorite pet: ' + Object.values(resolvedUser)[3])
   } else {
     console.log('No current user')
   }
