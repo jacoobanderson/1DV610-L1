@@ -8,7 +8,7 @@ function testFuncOne (num1, num2) {
 
 // Test function 2
 async function testFuncTwo () {
-    await ui.createForm([
+   return await ui.createForm([
         'What is your name?',
         'What is your cats name?',
         {
@@ -45,7 +45,8 @@ ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user +
 
 
 // ASYNC NEEDS AWAIT
-await testFuncTwo()
+const data = await testFuncTwo()
+console.log(data)
 
 ui.addExitOption()
 

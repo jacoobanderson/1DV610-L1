@@ -10,7 +10,6 @@ export class InterfaceCreator {
   #returnToMenuOption
   #returnToMenuColor
   #formColor
-  formData
 
   start() {
     if (this.#menu) {
@@ -56,7 +55,7 @@ export class InterfaceCreator {
         const question = Object.keys(questions[i])[0]
         const arrayOfAlternatives = Object.values(questions[i])[0]
 
-        if(this.#formColor) {
+        if (this.#formColor) {
           console.log(this.#formColor, question)
         } else {
           console.log(question)
@@ -72,10 +71,8 @@ export class InterfaceCreator {
           await input
         )
         answers[question] = chosenAlternative
-        console.log(answers)
       } else {
         if (this.#formColor) {
-
           console.log(this.#formColor, questions[i])
         } else {
           console.log(questions[i])
@@ -84,6 +81,7 @@ export class InterfaceCreator {
         answers[questions[i]] = await input
       }
     }
+    return answers
   }
 
   // storeFormDataInFile()
