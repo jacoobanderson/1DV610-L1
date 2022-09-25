@@ -26,9 +26,14 @@ async function form() {
 
 async function showUser() {
   const resolvedUser = await user
-  console.log('Name: ' + Object.values(resolvedUser)[0])
-  console.log('Age: ' + Object.values(resolvedUser)[1])
-  console.log('Country: ' + Object.values(resolvedUser)[2])
+  if (resolvedUser) {
+    console.log('Name: ' + Object.values(resolvedUser)[0])
+    console.log('Age: ' + Object.values(resolvedUser)[1])
+    console.log('Country: ' + Object.values(resolvedUser)[2])
+  } else {
+    console.log('No current user')
+  }
+  ui.start()
 }
 
 
