@@ -55,9 +55,9 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 ​
 | Vad testas      | input | output | utfall PASS/FAIL |
 | --------- | --------- | ------ | ------- |
-|  Skapa prompt med meddelande, färg och användning av svar.         |  1. ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue') 2. Kör npm start i terminalen. 3. Skriv in namnet Karl 4. Klicka enter.         | Frågan "What is your name?" ska visas, användaren ska kunna skiva in sitt namn, efter inskrivet namn ska "Welcome, Karl" i blå färg visas.       |         |
-|           |           |        |         |
-|           |           |        |         |
+|  Skapa prompt med meddelande, färg och användning av svar.         |  1. ```javascript ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')```</br> 2. Kör npm start i terminalen.</br>  3. Skriv in namnet Karl </br> 4. Klicka enter.         | Frågan "What is your name?" ska visas, användaren ska kunna skiva in sitt namn, efter inskrivet namn ska "Welcome, Karl" i blå färg visas.       |    PASS     |
+|   Lägga till exit alternativ        |    1. Lägg till ```javascript ui.addExitOption()``` och ```javascript ui.start()``` efter i koden. </br> 2. Kör npm start i terminalen </br> 3. Skriv Q och klicka enter     |    Längst ned i huvudmenyn ska det finnas "To exit the program enter Q" och när q har skrivits in ska programmet avslutas.   |    PASS     |
+|  Skapa huvudmeny vy         |   1. Lägg till ```javascript ui.setMainMenu({1: 'Add', 2: 'Subtract', 3: 'Divide', 4: 'Multiply'})``` och ```javascript ui.start()``` i koden. </br> 2. Kör npm start i terminalen.       |  Menyn ska visas och ska bestå av 1. Add, 2. Subtract, 3. Divide och 4. Multiply.      |    PASS     |
 |           |           |        |         |
 |           |           |        |         |
 |           |           |        |         |
