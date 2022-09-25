@@ -27,19 +27,29 @@ This is a list of the different methods that are offered:
 
 | Method               | Description                                  |
 | -------------------  | ---------------------------------------------|
-| **createPrompt(string, function, color)**                     |  `string` is a string that shows before the user prompt.</br>`function` is a function that takes the input as a parameter and handles the input.</br>`color` is the color that the first parameter string should be.                                         |
-| **addExitOption()**    |  Adds an exit option in the main menu                                            |
-| **setMainMenu(menuOptions)**                      | `menuOptions` is a object that should contain numbered keys starting from 1 with values set to the strings that wants to be shown in the menu.                                             |
-| **assignMainMenuFunctionality(menuFunctionality)**                     |  `menuOptions`                                            |
-|                      |                                              |
-|                      |                                              |
+| **createPrompt(string, function, color)**                     |  `string` is a string that shows before the user prompt.</br>`function` is a function that takes the input as a parameter and handles the input.</br>`color` is the color that the first parameter string should be. </br>                                         |
+| **addExitOption()**    |  Adds an exit option in the main menu.                                            |
+| **setMainMenu(menuOptions)**                      | `menuOptions` is a object that should contain numbered keys starting from 1 with values set to the strings that wants to be shown in the menu.</br>                                             |
+| **assignMainMenuFunctionality(menuFunctionality)**                     |  `menuFunctionality` is an object that should contain numbered keys starting from 1 and correlate to the menuOptions, the values should be functions which will be called when the correspondent menuOption is chosen. </br>                                             |
+| **createSubMenu(view, functionality)**                     |  This method is supposed to be used in another menu, i.e in the main menu as a value of the menuFunctionality object or in another submenu functionality object. </br> `view` is a object that should contain numbered keys starting from 1 with values set to the strings that wants to be shown in the submenu. </br>  `functionality` is an object that should contain numbered keys starting from 1 and correlate to the view, the values should be functions which will be called when the correspondent view option is chosen. </br>                                          |
+| **addReturnToMenuOption()**                     |        Adds a return to menu option in sub menus or after main menu functionality has been called.                                      |
+|  **createForm(questions)**                    |       Used to create a form which supports both regular questions with written answers and multichoice questions. </br> `questions` is an array that contains strings for regular questions with written answers and an object with the question as the key and and array of multichoice answers as the value for multichoice questions.                                        |
+|   **start()                   |       Is the method that initializes the user interface and is supposed to be put after all other methods in the code. This method is essential for it all to work.                                       |
+|   **setColor(section, color)                   | Sets the color of a certain section in the user interface </br> `section` is the section that the color should apply to. `color` is the color that the section should have. </br> All the available colors and sections are shown down below.                                          |
+
+## Available color sections
+
+`menu` The main menu. </br>
+`exit` The exit message. </br>
+`returnToMenu` The return to menu message. </br>
+`form` The form. </br>
 
 ## Available colors
-
-All colors are used within a string.
 
 `red`
 `green`
 `yellow`
 `blue`
 `cyan`
+
+## Method examples
