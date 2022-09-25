@@ -77,6 +77,7 @@ ui.assignMainMenuFunctionality({
 ui.setColor('menu', 'red')
 ui.setColor('exit', 'cyan')
 ui.setColor('returnToMenu', 'blue')
+ui.setColor('form', 'blue')
 
 ui.addReturnToMenuOption()
 

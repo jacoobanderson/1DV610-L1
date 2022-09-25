@@ -9,6 +9,7 @@ export class InterfaceCreator {
   #exitColor
   #returnToMenuOption
   #returnToMenuColor
+  #formColor
   formData
 
   start() {
@@ -54,18 +55,31 @@ export class InterfaceCreator {
       if (this.#isObjectOrString(questions[i])) {
         const question = Object.keys(questions[i])[0]
         const arrayOfAlternatives = Object.values(questions[i])[0]
-        console.log(question)
+
+        if(this.#formColor) {
+          console.log(this.#formColor, question)
+        } else {
+          console.log(question)
+        }
 
         arrayOfAlternatives.forEach((element, index) => {
-          console.log((index + 1) + '. ' + element)
+          console.log(index + 1 + ". " + element)
         })
 
         const input = await this.#promptUserWaitForInput()
-        const chosenAlternative = this.#checkWhichFormAlternative(arrayOfAlternatives, await input)
+        const chosenAlternative = this.#checkWhichFormAlternative(
+          arrayOfAlternatives,
+          await input
+        )
         answers[question] = chosenAlternative
         console.log(answers)
       } else {
-        console.log(questions[i])
+        if (this.#formColor) {
+
+          console.log(this.#formColor, questions[i])
+        } else {
+          console.log(questions[i])
+        }
         const input = await this.#promptUserWaitForInput()
         answers[questions[i]] = await input
       }
@@ -109,6 +123,10 @@ export class InterfaceCreator {
     if (section === "returnToMenu") {
       const colorCode = this.#getColorCode(color)
       this.#returnToMenuColor = colorCode
+    }
+    if (section === "form") {
+      const colorCode = this.#getColorCode(color)
+      this.#formColor = colorCode
     }
   }
 
