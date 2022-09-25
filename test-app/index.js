@@ -1,4 +1,4 @@
-import { InterfaceCreator } from '../interfaceCreator/src/interface-creator.js'
+import { InterfaceCreator } from '@jacoobanderson/interface-creator'
 
 const ui = new InterfaceCreator()
 // Test function 1
