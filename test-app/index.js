@@ -6,10 +6,12 @@ function testFuncOne (num1, num2) {
   console.log(num1 + num2)
 }
 
-async function testFuncTwo () {
+// Creates form and returns answers
+async function form() {
   return await ui.createForm([
     'What is your name?',
     'What is your cats name?',
+    // Question with multi choice answers.
     {
       'Which country do you live in?': ['Sweden', 'Norway', 'Denmark']
     }
@@ -35,7 +37,8 @@ function testFuncThreeSub (num1, num2) {
 ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')
 
 // ASYNC NEEDS AWAIT
-const data = await testFuncTwo()
+const data = await form()
+// Shows the form data.
 console.log(data)
 
 ui.addExitOption()
