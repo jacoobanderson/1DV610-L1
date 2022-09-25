@@ -42,8 +42,9 @@ export class InterfaceCreator {
     })
   }
 
-  #handleFormInput(alternatives, input) {
-    
+  #checkWhichFormAlternative(alternatives, input) {
+    const chosenAlternative = alternatives[input - 1]
+    return chosenAlternative
   }
 
   async createForm(questions) {
@@ -60,7 +61,8 @@ export class InterfaceCreator {
         })
 
         const input = await this.#promptUserWaitForInput()
-        answers[questions[i]] = await input
+        const chosenAlternative = this.#checkWhichFormAlternative(arrayOfAlternatives, await input)
+        answers[question] = chosenAlternative
         console.log(answers)
       } else {
         console.log(questions[i])
