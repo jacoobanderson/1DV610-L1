@@ -1,5 +1,5 @@
-import prompt from 'prompt-sync'
-import process from 'node:process'
+import prompt from "prompt-sync"
+import process from "node:process"
 
 /**
  * Creates an customizable interface.
@@ -17,7 +17,7 @@ export class InterfaceCreator {
   /**
    * Starts the menu functionality.
    */
-  start () {
+  start() {
     if (this.#menu) {
       this.#createMenu()
 
@@ -40,8 +40,8 @@ export class InterfaceCreator {
    * @param {string} element - The element to be checked.
    * @returns {boolean} - Returns false if the element is a string.
    */
-  #isObjectOrString (element) {
-    if (typeof element === 'string') {
+  #isObjectOrString(element) {
+    if (typeof element === "string") {
       return false
     }
     return true
@@ -53,7 +53,7 @@ export class InterfaceCreator {
    *
    * @returns {string} - Returns the input.
    */
-  #promptUserWaitForInput () {
+  #promptUserWaitForInput() {
     return new Promise((resolve) => {
       const input = this.#promptUser()
       resolve(input)
@@ -67,13 +67,13 @@ export class InterfaceCreator {
    * @param {string} input - The user input.
    * @returns {string} - The chosen alternative or a string that indicates invalid input.
    */
-  #checkWhichFormAlternative (alternatives, input) {
+  #checkWhichFormAlternative(alternatives, input) {
     if (input > 0 && input < alternatives.length + 1) {
       const chosenAlternative = alternatives[input - 1]
       return chosenAlternative
     } else {
-      console.log('That is an invalid option.')
-      return 'Invalid'
+      console.log("That is an invalid option.")
+      return "Invalid"
     }
   }
 
@@ -83,7 +83,7 @@ export class InterfaceCreator {
    * @param {Array} questions - an array of questions.
    * @returns {object} Returns an object of questions and it's answers.
    */
-  async createForm (questions) {
+  async createForm(questions) {
     const answers = {}
 
     for (let i = 0; i < questions.length; i++) {
@@ -98,7 +98,7 @@ export class InterfaceCreator {
         }
 
         arrayOfAlternatives.forEach((element, index) => {
-          console.log(index + 1 + '. ' + element)
+          console.log(index + 1 + ". " + element)
         })
 
         const input = await this.#promptUserWaitForInput()
@@ -129,7 +129,7 @@ export class InterfaceCreator {
    * @param {Function} functionality - The function that is to be called with the input as a parameter.
    * @param {string} color - The color that the message should have.
    */
-  createPrompt (message, functionality, color) {
+  createPrompt(message, functionality, color) {
     console.log(this.#getColorCode(color), message)
     const input = this.#promptUser()
     functionality(input)
@@ -140,7 +140,7 @@ export class InterfaceCreator {
    *
    * @param {object} menuOptions - Object of numbered keys starting from 1 and values as strings meant to be options.
    */
-  setMainMenu (menuOptions) {
+  setMainMenu(menuOptions) {
     this.#menu = menuOptions
   }
 
@@ -150,15 +150,20 @@ export class InterfaceCreator {
    * @param {object} view - An object of numbered keys starting from 1 and values as strings meant to be options.
    * @param {object} functionality - An object of numbered keys corresponding to the view with functions as values.
    */
-  createSubMenu (view, functionality) {
+  createSubMenu(view, functionality) {
     for (const [key, value] of Object.entries(view)) {
-      console.log(key + '. ' + value + '.')
+      console.log(key + ". " + value + ".")
     }
+
     if (this.#returnToMenuOption) {
       this.#showReturnToMenuAndExitOption()
-      this.#returnToMainMenu()
     }
+    
     const input = this.#promptUser()
+
+    if (this.#returnToMenuOption) {
+      this.#returnToMainMenu(input)
+    }
     this.#handleMenuInput(functionality, input)
   }
 
@@ -168,21 +173,21 @@ export class InterfaceCreator {
    * @param {string} section - The section that should have another color (menu, exit, returnToMenu or form)
    * @param {string} color - The color of the section.
    */
-  setColor (section, color) {
+  setColor(section, color) {
     section.toLowerCase()
-    if (section === 'menu') {
+    if (section === "menu") {
       const colorCode = this.#getColorCode(color)
       this.#menuColor = colorCode
     }
-    if (section === 'exit') {
+    if (section === "exit") {
       const colorCode = this.#getColorCode(color)
       this.#exitColor = colorCode
     }
-    if (section === 'returnToMenu') {
+    if (section === "returnToMenu") {
       const colorCode = this.#getColorCode(color)
       this.#returnToMenuColor = colorCode
     }
-    if (section === 'form') {
+    if (section === "form") {
       const colorCode = this.#getColorCode(color)
       this.#formColor = colorCode
     }
@@ -191,25 +196,25 @@ export class InterfaceCreator {
   /**
    * Sets the exit option.
    */
-  addExitOption () {
+  addExitOption() {
     this.#exitOption = true
   }
 
   /**
    * Adds the return to menu option.
    */
-  addReturnToMenuOption () {
+  addReturnToMenuOption() {
     this.#returnToMenuOption = true
   }
 
   /**
    * Shows an exit message and sets the color of that message.
    */
-  #showExitMessage () {
+  #showExitMessage() {
     if (this.#exitColor) {
-      console.log(this.#exitColor, 'To exit the program enter Q')
+      console.log(this.#exitColor, "To exit the program enter Q")
     } else {
-      console.log('To exit the program enter Q')
+      console.log("To exit the program enter Q")
     }
   }
 
@@ -218,8 +223,8 @@ export class InterfaceCreator {
    *
    * @param {string} input - The input of the user.
    */
-  #exitApplication (input) {
-    if (input === 'q') {
+  #exitApplication(input) {
+    if (input === "q") {
       process.exit(0)
     }
   }
@@ -230,28 +235,28 @@ export class InterfaceCreator {
    * @param {string} color - the color.
    * @returns {string} Returns the color code.
    */
-  #getColorCode (color) {
+  #getColorCode(color) {
     color.toLowerCase()
     let colorCode
 
     switch (color) {
-      case 'red':
-        colorCode = '\x1b[31m%s\x1b[0m'
+      case "red":
+        colorCode = "\x1b[31m%s\x1b[0m"
         break
-      case 'green':
-        colorCode = '\x1b[32m%s\x1b[0m'
+      case "green":
+        colorCode = "\x1b[32m%s\x1b[0m"
         break
-      case 'yellow':
-        colorCode = '\x1b[33m%s\x1b[0m'
+      case "yellow":
+        colorCode = "\x1b[33m%s\x1b[0m"
         break
-      case 'blue':
-        colorCode = '\x1b[34m%s\x1b[0m'
+      case "blue":
+        colorCode = "\x1b[34m%s\x1b[0m"
         break
-      case 'cyan':
-        colorCode = '\x1b[36m%s\x1b[0m'
+      case "cyan":
+        colorCode = "\x1b[36m%s\x1b[0m"
         break
       default:
-        colorCode = '\x1b[37m%s\x1b[0m'
+        colorCode = "\x1b[37m%s\x1b[0m"
         break
     }
     return colorCode
@@ -262,24 +267,24 @@ export class InterfaceCreator {
    *
    * @param {object} menuFunctionality - An object of numbered keys starting from 1 with values as functions.
    */
-  assignMainMenuFunctionality (menuFunctionality) {
+  assignMainMenuFunctionality(menuFunctionality) {
     this.#menuFunctionality = menuFunctionality
   }
 
   /**
    * Creates the menu view and its color.
    */
-  #createMenu () {
+  #createMenu() {
     try {
       for (const [key, value] of Object.entries(this.#menu)) {
         if (this.#menuColor) {
-          console.log(this.#menuColor, +key + '. ' + value + '.')
+          console.log(this.#menuColor, +key + ". " + value + ".")
         } else {
-          console.log(key + '. ' + value + '.')
+          console.log(key + ". " + value + ".")
         }
       }
     } catch (error) {
-      console.log('No menu has been created.')
+      console.log("No menu has been created.")
     }
   }
 
@@ -288,7 +293,7 @@ export class InterfaceCreator {
    *
    * @returns {string} Returns the input.
    */
-  #promptUser () {
+  #promptUser() {
     const readInput = prompt()
     return readInput()
   }
@@ -296,8 +301,7 @@ export class InterfaceCreator {
   /**
    * Returns the user to the main menu.
    */
-  #returnToMainMenu () {
-    const input = this.#promptUser()
+  #returnToMainMenu(input) {
     input.toLowerCase()
     this.#exitApplication(input)
     if (!input) {
@@ -308,16 +312,16 @@ export class InterfaceCreator {
   /**
    * Creates a return to menu and exit option.
    */
-  #showReturnToMenuAndExitOption () {
+  #showReturnToMenuAndExitOption() {
     if (this.#returnToMenuColor) {
       console.log(
         this.#returnToMenuColor,
-        '\nTo return to the main menu press enter.'
+        "\nTo return to the main menu press enter."
       )
-      console.log(this.#returnToMenuColor, 'To exit the application enter Q.')
+      console.log(this.#returnToMenuColor, "To exit the application enter Q.")
     } else {
-      console.log('\nTo return to the main menu press enter.')
-      console.log('To exit the application enter Q.')
+      console.log("\nTo return to the main menu press enter.")
+      console.log("To exit the application enter Q.")
     }
   }
 
@@ -327,14 +331,14 @@ export class InterfaceCreator {
    * @param {object} menuFunctionalityObject - An object of numbered keys starting from 1 with values as functions.
    * @param {string} userInput - The user input.
    */
-  #handleMenuInput (menuFunctionalityObject, userInput) {
+  #handleMenuInput(menuFunctionalityObject, userInput) {
     try {
       const menuFunctionToCall = menuFunctionalityObject[userInput]
       if (menuFunctionToCall) {
         menuFunctionToCall()
       }
     } catch (error) {
-      console.log('No menu functionality has been assigned.')
+      console.log("No menu functionality has been assigned.")
     }
   }
 }

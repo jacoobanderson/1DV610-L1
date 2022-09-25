@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jacoobanderson/interface-creator": "^1.0.0"
+    "@jacoobanderson/interface-creator": "^1.0.1"
   }
 }

@@ -90,32 +90,14 @@ const view = {
 }
 
 const functionality = {
-  /**
-   *
-   */
   1: () => testFuncOneSub(1, 3),
-  /**
-   *
-   */
   2: async () => await testFuncTwo(),
-  /**
-   *
-   */
   3: () => testFuncThreeSub(23, 34)
 }
 
 ui.assignMainMenuFunctionality({
-  /**
-   *
-   */
   1: () => ui.createSubMenu(view, functionality),
-  /**
-   *
-   */
   2: async () => await testFuncTwo(),
-  /**
-   *
-   */
   3: () => testFuncThree(5, 5)
 })
 
