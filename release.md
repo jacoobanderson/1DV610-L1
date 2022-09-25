@@ -26,7 +26,7 @@ Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser.
 ## Återanvändning
 Beskriv hur du anpassat din kod och instruktioner för att någon annan programmerare skall kunna använda din modul. Om du skrivit instruktioner för din användare, länka till dessa. Om inte, beskriv här hur någon skall göra för att använda din modul.
 
-Alla instruktioner om hur man ska använda sig av min modul finns i README.md. Där finns det en installationsguide, alla metoder och en beskrivning av hur de fungerar, det finns listor på parametrar som vissa metoder stödjer samt kodexempel på hur man skulle kunna använda sig av metoderna.
+Alla instruktioner om hur man ska använda sig av min modul finns i README.md. Där finns det en installationsguide, alla metoder och en beskrivning av hur de fungerar, det finns listor på argument som vissa metoder stödjer samt kodexempel på hur man skulle kunna använda sig av metoderna. Jag har även kommenterat samtliga metoder genom JSDoc kommentarer vilket underlättar då förklaring av metoderna finns direkt tillgängliga.
 ​
 ## Beskrivning av min kod
 Beskriv din kod på en hög abstraktionsnivå. En kort beskrivning av dina viktigaste klasser och metoder. Skapa gärna ett klassdiagram som bild. Använd det ni lärt er så här långt i 1dv607. Kommunicera så att jag kan förstå.
@@ -55,6 +55,11 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 ​
 | Vad testas      | input | output | utfall PASS/FAIL |
 | --------- | --------- | ------ | ------- |
+|  Skapa prompt med meddelande, färg och användning av svar.         |  1. ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue') 2. Kör npm start i terminalen. 3. Skriv in namnet Karl 4. Klicka enter.         | Frågan "What is your name?" ska visas, användaren ska kunna skiva in sitt namn, efter inskrivet namn ska "Welcome, Karl" i blå färg visas.       |         |
+|           |           |        |         |
+|           |           |        |         |
+|           |           |        |         |
+|           |           |        |         |
 |           |           |        |         |
 
 ​
