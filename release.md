@@ -2,14 +2,14 @@
 ​
 ## Checklista
   - [x] Jag har skrivit all kod och reflektioner själv. Jag har inte använt mig av andras kod för att lösa uppgiften.
-  - [ ] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt: "det bör fungera" :) )
+  - [x] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt: "det bör fungera" :) )
   - [x] Koden är objektorienterad
   - [x] Jag har skrivit en modul som riktar sig till programmerare
 ​
 ## Egenskattning och mål
   - [ ] Jag är inte klar eftersom jag vet att jag saknar något. (Då skall du inte lämna in! Lämna då istället in på restlaboration.)
   - [x] Jag eftersträvar med denna inlämning godkänt betyg (E-D)
-    - [ ] De flesta testfall fungerar
+    - [x] De flesta testfall fungerar
     - [x] Koden är förberedd på Återanvändning
     - [x] All kod samt historik finns i git 
     - [ ] Kodkvaliterskraven är ifyllda
@@ -62,7 +62,7 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 |  **TC4** Lägg till funktionalitet i menyn         |  1. TC3 </br> 2. Lägg till koden ```assignMainMenuFunctionality({1: () => console.log('addFunction')})``` före ``` ui.start() ``` </br> 3. Kör npm start i terminalen. </br> 4. Skriv "1" och klicka enter.       |   Meddelandet "addFunction" ska visas    |   PASS      |
 |  **TC5**   Skapa en sub meny    |  1. TC4</br> 2. Skapa ```const view = {1. 'Say hello', 2. 'Say goodbye'}``` samt ```const functionality = {1. () => console.log('Hello'), 2. () => console.log('Goodbye)}``` </br> 3. Sätt in objekten i ```createSubMenu(view, functionality)``` och lägg funktionen i (nummer 1) huvudmenyns funktionalitet. (TC4) </br> 4. Kör npm start i terminalen.</br> 5. Skriv nummer 1 och tryck enter </br> 6. Tryck i nummer 1 i submenyn     |   Efter huvudmenyn ska en submeny visas</br> ```1. Say hello```</br> ```2. Say goodbye```</br> När 1 trycks in ska meddelandet ```Hello```visas i terminalen.    |   PASS      |
 |  **TC6** Alternativ för att komma tillbaks till huvudmenyn ska finnas        |  1. TC4, TC5  </br> 2. Lägg dit ``` addReturnToMenuOption() ```innan ```ui.start()``` </br> 3. Kör npm start i terminalen </br> 4. Navigera till submenyn. </br> 5. Klicka på enter     |    Meddelandet ```To return to the main menu press enter.```ska visas längst ner i terminalen och om man klickar på enter ska man tas tillbaks till huvudmenyn    |    PASS     |
-|  **TC7**  Skapa ett formulär   | 1. Skapa en array ```const questions = ['Vad heter du?', {'Var bor du?': ['Sverige', 'Danmark']}]``` </br> 2. Sätt in arrayen i ```ui.createForm(questions)```</br> 3. Kör npm start i terminalen </br> 4. Svara på formuläret | Frågan ```Vad heter du?``` ska visas med möjligheten till att svara, därefter ska ```Var bor du?´´´ visas följt av ett flervals alternativ.   |    PASS     |
+|  **TC7**  Skapa ett formulär   | 1. Skapa en array ```const questions = ['Vad heter du?', {'Var bor du?': ['Sverige', 'Danmark']}]``` </br> 2. Sätt in arrayen i ```ui.createForm(questions)```</br> 3. Kör npm start i terminalen </br> 4. Svara på formuläret | Frågan ```Vad heter du?``` ska visas med möjligheten till att svara, därefter ska ```Var bor du?``` visas följt av ett flervals alternativ.   |    PASS     |
 |  **TC7.1**  Visa informationen i formuläret   | 1. TC7 </br> 2. Skriv ```console.log(await questions)```createForm. </br> 3. Kör npm start </br> 4. Fyll i formuläret | Informationen som skrivits in ska visas i terminalen.   |    PASS     |
 | **TC8** Sätta färg på menyn   | 1. TC3 </br> 2. Skriv dit ```setColor('menu', 'blue')```</br> 3. Kör npm start |  Menyn ska vara blå.  |    PASS     |
 | **TC8.1** Sätta färg på exit texten   | 1. TC3 </br> 2. Skriv dit ```setColor('exit', 'red')```</br> 3. Kör npm start |  Exit meddelandet ska vara rött.  |    PASS     |
@@ -78,11 +78,12 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 ​
 | Namn och förklaring  | Reflektion                                   |
 | -------------------  | ---------------------------------------------|
-| createForm                     |                                              |
-| setMainMenu                     |                                              |
-| addExitOption                     |                                              |
-| assignMainMenuFunctionality                     |                                              |
-| start                     |                                              |
+| **createForm**  - Metodnamn på metod som skapar ett formulär                   |  **Method Names** </br> Använder sig av verbet "create"                                             |
+| **setMainMenu** - metodnamn på metod som sätter en huvudmeny                    |      **Solution Domain Names** </br> Använder "set" som är vanligt inom utveckling och visar därför på vad den faktiskt gör, den sätter informationen men visar ingenting direkt.  </br> **Method Names** </br> Set bör användas vid mutators samt följas av vad det faktiskt är som sätts vilket jag gör med detta namnet.                                      |
+| **addExitOption**  - metodnamn på metod som lägger till ett "exit" alternativ                   |   **Method Names** </br> Borde vara setExitOption istället då det är en mutator. </br> **Pick one word per concept** </br>Borde namngivit denna till setExitOption då det är en mutator och om jag skulle följt dessa på samtliga mutators hade denna regeln följts.                                          |
+| **assignMainMenuFunctionality(functionality)** - Metodnamn på metod som sätter huvudmenyns funktionalitet                     |                                              | **Don't be cute** </br> Följer denna genom att med namnet visa exakt vad som händer. </br> **Method Names** </br> Borde varit set även här då det är en mutator. </br> **Use Intention-Revealing Names** </br> Detta namnet visar på att menyn behöver funktionalitet, att den ger denna funktionalitet till huvudmenyn och att den gör detta genom att skicka med en parameter.
+| **start** - metodnamn på metod som sätter igång huvudmenyn.                    |   **Don't be cute** </br> Borde vara tydligare och visa vad den faktiskt gör, svårt att förstå vad den faktiskt startar.                                         |
+| **arrayOfAlternatives** - Variabel som förvarar flervalssvar i formuläret                   |   **Avoid disinformation** </br> Här är jag tydlig med att inte använda exempelvis "listOfAlternatives" utan väljer istället "array" för att faktiskt visa vad är för någonting. Då en array är någonting andra utvecklare är vana vid så förstår dem direkt hur de ska hantera denna variabel.                                        |
 ​
 ### Funktioner
 ​
@@ -98,3 +99,4 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 Reflektera över uppgiften utifrån ett kodkvalitetsperspektiv. Använd begrepp ifrån boken. 
 
 pick one word per concept, skulle använda set för alla t.ex, just nu set, add, assign för ungefär samma sak.
+klassnamnet borde vara ex userInterface inte verb ish
