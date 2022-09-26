@@ -85,6 +85,8 @@ This is a list of the different methods that are offered:
         2: () => divideValues(),
         3: () => multiplyValues()
     })
+    
+    ui.start()
 ```
 
 ```javascript
