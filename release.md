@@ -13,23 +13,21 @@
     - [x] Koden är förberedd på Återanvändning
     - [x] All kod samt historik finns i git 
     - [x] Kodkvaliterskraven är ifyllda
-    - [ ] Reflektion är skriven utifrån bokens kapitel 
+    - [x] Reflektion är skriven utifrån bokens kapitel 
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C-B) och anser mig uppfylla alla extra krav för detta. 
     - [ ] Samtliga testfall är skrivna    
     - [ ] Testfall är automatiserade
-    - [ ] Det finns en tydlig beskrivning i hur modulen skall användas (i git)
+    - [x] Det finns en tydlig beskrivning i hur modulen skall användas (i git)
     - [ ] Kodkvalitetskraven är varierade 
   - [ ] Jag eftersträvar med denna inlämning högsta betyg (A) 
 ​
 Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser. 
 ​
 ## Återanvändning
-Beskriv hur du anpassat din kod och instruktioner för att någon annan programmerare skall kunna använda din modul. Om du skrivit instruktioner för din användare, länka till dessa. Om inte, beskriv här hur någon skall göra för att använda din modul.
 
 Alla instruktioner om hur man ska använda sig av min modul finns i README.md. Där finns det en installationsguide, alla metoder och en beskrivning av hur de fungerar, det finns listor på argument som vissa metoder stödjer samt kodexempel på hur man skulle kunna använda sig av metoderna. Jag har även kommenterat samtliga metoder genom JSDoc kommentarer vilket underlättar då förklaring av metoderna finns direkt tillgängliga.
 ​
 ## Beskrivning av min kod
-Beskriv din kod på en hög abstraktionsnivå. En kort beskrivning av dina viktigaste klasser och metoder. Skapa gärna ett klassdiagram som bild. Använd det ni lärt er så här långt i 1dv607. Kommunicera så att jag kan förstå.
 
 createPrompt(message, functionality, color) - Denna metoden skriver ut ett meddelande och om det har valts en färg så gör metoden om meddelandet till denna färgen. Metoden fortsätter sedan med att begära ett input från användaren och därefter hanteras input med den funktion man skickat med som argument. Funktionen som skickas med som argument kan använda sig av en egen parameter som då är användarens input och man kan därmed hantera input i funktionen man skickar med.
 
@@ -48,12 +46,10 @@ handleMenuInput(menuFunctionalityObject, userInput) - Argumenten består av ett 
 createSubMenu(view, functionality) - Fungerar likt huvudmenyn men tar istället in både vy och funktionalitet samt att det hanteras annorlunda då det här finns stöd för att gå tillbaks till huvudmenyn. Den loopar igenom vyn och skriver ut menyvalen, kollar om det ska finnas ett "tillbaka till huvudmenyn" alternativ, ber om input och skickar sedan vidare input och funktionaliteten till handleMenuInput.
 ​
 ## Hur jag testat
-Beskriv hur du kommit fram till om din kod fungerar.
 
 Jag har testat min kod genom manuell testning. Testat all kod och sett så att den tänkta funktionaliteten finns där. Nedan finns testfallen och input i form av teststeg samt output som beskriver det som ska visas. Jag har gått igenom alla dessa och sett att det fungerar. 
 ​
 ### Testfall
-Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En rad per testfall. Om ni använder vertyg för testning kan ni ha en bild här med testrapporten. Tänk på att kommunicera till mig. Vad fungerar?, vad fungerar inte? Hur är det testat? Vilka delar testas inte?
 ​
 | Vad testas      | input | output | utfall PASS/FAIL |
 | --------- | --------- | ------ | ------- |
@@ -73,8 +69,7 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 
 
 ## Kodkvalitetskrav
-​
-**Fetmarkera** de "regler" som används ur CC. Ni kan frångå tabellformat om ni vill. Skapa direktlänkar till er kod där det är lämpligt. Skriv så att jag kan förstå.
+
 ​
 ### Namngivning
 ​
@@ -98,8 +93,11 @@ Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En r
 | **createSubMenu(view, functionality)** - Skapar en undermeny och tar in menyalternativ samt funktionerna som ska motsvara alternativen.                    |   **Function Arguments** </br> Trots att det inte är optimalt med två argument (dyadic) så ger det trots det en bra beskrivning på hur funktionen ska fungera samt att det i detta fall är nödvändigt för att enklare dela upp koden. Vi vet att en meny behöver en "view" och någonting som händer när ett alternativ i view väljs (functionality), då detta är en modul menad för andra programmerare underlättar detta och är nödvändigt för att kunna välja utseende och funktionalitet själv. Ett Alternativ/lösning skulle kunna vara att slå ihop dessa två argument.                                     |
 ​
 ## Laborationsreflektion
-Reflektera över uppgiften utifrån ett kodkvalitetsperspektiv. Använd begrepp ifrån boken. 
 
-pick one word per concept, skulle använda set för alla t.ex, just nu set, add, assign för ungefär samma sak.
-klassnamnet borde vara ex userInterface inte verb ish
-borde delat upp i flera klasser.
+Uppgiften har varit intressant och väldigt lärorik, det har hela tiden funnits ett fokus på att försöka hålla kodkvalitén bra samtidigt som man ska lösa det problem man vill lösa vilket har varit svårt men även lärorikt. Då man inte hade samma kunskap när man började som när man avslutade projektet så är det lite olika nivå på kodkvalitén men att reflektera över hela uppgiften både I efterhand, under tiden och genom den dokumentation som krävdes har gett väldigt mycket insikt och förståelse för ämnet. Jag fokuserade mycket på namngivning till en början och försökte beskriva funktioner, variabler, metoder och liknande tydligt.
+</br>  
+En regel som jag kunde gjort bättre är “Pick one word per concept” där jag på flera ställen I min kod använder mig av metoder som i princip gör samma sak (mutators) men som jag har varierande namn på, detta skulle helt klart bli tydligare om jag som regeln säger höll mig till ett ord per koncept. Jag hade mycket fokus på att använda mig av verb vid metoder och jag försökte följa “Use intention revealing names” strikt för att verkligen visa vad mina metoder och variabler gör, är och hur dem fungerar. Det som kan sägas om hur jag gjorde detta är att längden på dessa blev väldigt långa I vissa fall vilket enligt boken är bra om det ger en tydlig förklaring men samtidigt är det att föredra kortare namn då det ger en bättre läsbarhet, jag tror jag hanterade detta bra men det finns definitivt förbättringsmöjligheter inom detta område och vissa namn kunde nog kortas ner utan att försämra förståelsen för vad som menas. 
+</br>
+Där jag mest kan se mina svagheter är funktionerna, jag har flera funktioner med varierande abstraktionsnivå vilket strider mot “One level of abstraction per function”, vilket är någonting som skulle förbättra min kod väldigt mycket om jag inte hade. Jag har funktioner som har en del sidoeffekter samt funktioner som gör flera saker än en vilket kunde lösas genom att dela upp funktionerna bättre och i mindre varianter. Det är att föredra att ha så få argument I funktionerna som möjligt vilket jag tyckte var svårt på grund av att modulen är till för en annan programmerare som ska kunna anpassa metoderna genom dessa argument. Jag tror dock att jag kunde minskat antalet argument genom bättre struktur och möjligtvis sammanslagning av vissa argument. 
+</br>
+Värt att nämna är också att jag kunde delat upp min kod I flera klasser och på så sätt enklare delat upp ansvaret för vissa funktioner vilket jag även tror hade främjat ännu mer uppdelning av funktionalitet och på så sätt minskat storlek, ansvar på funktionerna. 
