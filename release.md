@@ -12,7 +12,7 @@
     - [x] De flesta testfall fungerar
     - [x] Koden är förberedd på Återanvändning
     - [x] All kod samt historik finns i git 
-    - [ ] Kodkvaliterskraven är ifyllda
+    - [x] Kodkvaliterskraven är ifyllda
     - [ ] Reflektion är skriven utifrån bokens kapitel 
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C-B) och anser mig uppfylla alla extra krav för detta. 
     - [ ] Samtliga testfall är skrivna    
@@ -49,6 +49,8 @@ createSubMenu(view, functionality) - Fungerar likt huvudmenyn men tar istället 
 ​
 ## Hur jag testat
 Beskriv hur du kommit fram till om din kod fungerar.
+
+Jag har testat min kod genom manuell testning. Testat all kod och sett så att den tänkta funktionaliteten finns där. Nedan finns testfallen och input i form av teststeg samt output som beskriver det som ska visas. Jag har gått igenom alla dessa och sett att det fungerar. 
 ​
 ### Testfall
 Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En rad per testfall. Om ni använder vertyg för testning kan ni ha en bild här med testrapporten. Tänk på att kommunicera till mig. Vad fungerar?, vad fungerar inte? Hur är det testat? Vilka delar testas inte?

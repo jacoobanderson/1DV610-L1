@@ -110,3 +110,13 @@ console.log(data)
     ui.setColor('form', 'blue') 
 ```
 
+## Test-app
+
+To start the test application clone the test-app folder and run:
+
+```console
+$ npm install
+$ npm start
+```
+
+in the console.
