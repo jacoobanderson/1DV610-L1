@@ -121,8 +121,6 @@ export class InterfaceCreator {
     return answers
   }
 
-  // storeFormDataInFile()
-
   /**
    * Creates a user prompt.
    *
