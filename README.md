@@ -62,6 +62,15 @@ This is a list of the different methods that are offered:
     ui.createPrompt('What is your name?', (user) => console.log('Welcome, ' + user + '\n'), 'blue')  
 ```
 
+```console
+  What is your name?
+
+  Jacob
+
+  Welcome, Jacob
+```
+"Welcome, Jacob" Would be shown in blue.
+
 ```javascript
     ui.setMainMenu({
         1: 'Go to sub menu',
@@ -93,6 +102,21 @@ This is a list of the different methods that are offered:
     ui.start()
 ```
 
+Main menu:
+```console
+  1. Go to sub menu
+  2. Divide values
+  3. Multiply values
+  $ 1
+```
+
+Sub menu (When the number 1 is entered):
+```console
+  1. Add values
+  2. Form
+  3. Subtract values
+```
+
 ```javascript
 // Creates form and returns answers
 async function form() {
@@ -110,6 +134,19 @@ const data = await form()
 // Shows the form data.
 console.log(data)
 
+```
+
+Sub menu (When the number 1 is entered):
+```console
+  What is your name?
+  $ Jacob
+  What is your cats name?
+  $ Cat
+  Which country do you live in?
+  1. Sweden
+  2. Norway
+  3. Denmark
+  $ 1
 ```
 
 ```javascript
