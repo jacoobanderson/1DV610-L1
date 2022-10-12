@@ -80,7 +80,7 @@ export class InterfaceCreator {
   /**
    * Creates a form.
    *
-   * @param {Array} questions - an array of questions.
+   * @param {string[] || object[]} questions - an array of questions.
    * @returns {object} Returns an object of questions and it's answers.
    */
   async createForm(questions) {

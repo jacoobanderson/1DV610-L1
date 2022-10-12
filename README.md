@@ -1,3 +1,7 @@
+## Description
+
+This is a nodeJS module that is used to simplify the process of creating a menu and interface in the terminal. It creates the structure of a menu and allows the developer to easily configure that menu to what is needed. There are functionality to create fully customizable main menu, sub menus, forms, add exit and return options as well as changing colors of each section.
+
 ## Installation and Usage
 
 This is a [Node.js](https://nodejs.org/en/) module that is installed using:
