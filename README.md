@@ -65,7 +65,7 @@ This is a list of the different methods that are offered:
 ```console
   What is your name?
 
-  Jacob
+  $ Jacob
 
   Welcome, Jacob
 ```

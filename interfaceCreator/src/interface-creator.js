@@ -275,16 +275,24 @@ export class InterfaceCreator {
    */
   #createMenu() {
     try {
-      for (const [key, value] of Object.entries(this.#menu)) {
-        if (this.#menuColor) {
-          console.log(this.#menuColor, +key + ". " + value + ".")
-        } else {
-          console.log(key + ". " + value + ".")
-        }
-      }
+      this.#printMenu()
     } catch (error) {
-      console.log("No menu has been created.")
+      this.#printNoMenuError()
     }
+  }
+
+  #printMenu() {
+    for (const [key, value] of Object.entries(this.#menu)) {
+      if (this.#menuColor) {
+        console.log(this.#menuColor, +key + ". " + value + ".")
+      } else {
+        console.log(key + ". " + value + ".")
+      }
+    }
+  }
+
+  #printNoMenuError() {
+    console.log("No menu has been created.")
   }
 
   /**
