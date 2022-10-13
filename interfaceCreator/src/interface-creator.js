@@ -327,9 +327,19 @@ export class InterfaceCreator {
       )
       console.log(this.#returnToMenuColor, "To exit the application enter Q.")
     } else {
-      console.log("\nTo return to the main menu press enter.")
-      console.log("To exit the application enter Q.")
+      this.#printReturnToMenuOption()
+      this.#printExitApplicationOption()
     }
+  }
+
+  
+
+  #printReturnToMenuOption() {
+    console.log("\nTo return to the main menu press enter.")
+  }
+
+  #printExitApplicationOption() {
+    console.log("To exit the application enter Q.")
   }
 
   /**
