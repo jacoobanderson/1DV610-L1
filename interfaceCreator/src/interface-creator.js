@@ -97,9 +97,7 @@ export class InterfaceCreator {
           console.log(question)
         }
 
-        arrayOfAlternatives.forEach((element, index) => {
-          console.log(index + 1 + ". " + element)
-        })
+        this.#printFormAlternatives(arrayOfAlternatives)
 
         const input = await this.#promptUserWaitForInput()
         const chosenAlternative = this.#checkWhichFormAlternative(
@@ -119,6 +117,12 @@ export class InterfaceCreator {
     }
     this.start()
     return answers
+  }
+
+  #printFormAlternatives(alternatives) {
+    alternatives.forEach((element, index) => {
+      console.log(index + 1 + ". " + element)
+    })
   }
 
   /**
