@@ -150,9 +150,7 @@ export class InterfaceCreator {
    * @param {object} functionality - An object of numbered keys corresponding to the view with functions as values.
    */
   createSubMenu(view, functionality) {
-    for (const [key, value] of Object.entries(view)) {
-      console.log(key + ". " + value + ".")
-    }
+    this.#printSubMenu(view)
 
     if (this.#returnToMenuOption) {
       this.#showReturnToMenuAndExitOption()
@@ -166,6 +164,11 @@ export class InterfaceCreator {
     this.#handleMenuInput(functionality, input)
   }
 
+  #printSubMenu(view) {
+    for (const [key, value] of Object.entries(view)) {
+      console.log(key + ". " + value + ".")
+    }
+  }
   /**
    * Sets the color of a certain section.
    *
