@@ -173,21 +173,18 @@ export class InterfaceCreator {
    * @param {string} color - The color of the section.
    */
   setColor(section, color) {
+    const colorCode = this.#getColorCode(color)
     section.toLowerCase()
     if (section === "menu") {
-      const colorCode = this.#getColorCode(color)
       this.#menuColor = colorCode
     }
     if (section === "exit") {
-      const colorCode = this.#getColorCode(color)
       this.#exitColor = colorCode
     }
     if (section === "returnToMenu") {
-      const colorCode = this.#getColorCode(color)
       this.#returnToMenuColor = colorCode
     }
     if (section === "form") {
-      const colorCode = this.#getColorCode(color)
       this.#formColor = colorCode
     }
   }
@@ -332,7 +329,7 @@ export class InterfaceCreator {
     }
   }
 
-  
+
 
   #printReturnToMenuOption() {
     console.log("\nTo return to the main menu press enter.")
@@ -340,6 +337,10 @@ export class InterfaceCreator {
 
   #printExitApplicationOption() {
     console.log("To exit the application enter Q.")
+  }
+
+  #printNoMenuFunctionality() {
+    console.log("No menu functionality has been assigned.")
   }
 
   /**
@@ -355,7 +356,7 @@ export class InterfaceCreator {
         menuFunctionToCall()
       }
     } catch (error) {
-      console.log("No menu functionality has been assigned.")
+      this.#printNoMenuFunctionality()
     }
   }
 }
