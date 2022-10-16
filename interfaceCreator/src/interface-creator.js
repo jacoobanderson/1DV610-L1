@@ -1,5 +1,6 @@
 import prompt from "prompt-sync"
 import process from "node:process"
+import { interfaceView } from "./interface-view"
 
 /**
  * Creates an customizable interface.
@@ -13,6 +14,11 @@ export class InterfaceCreator {
   #returnToMenuOption
   #returnToMenuColor
   #formColor
+  #view
+
+  constructor() {
+    this.#view = new interfaceView()
+  }
 
   /**
    * Starts the menu functionality.
@@ -22,7 +28,7 @@ export class InterfaceCreator {
       this.#createMenu()
 
       if (this.#exitOption) {
-        this.#printExitMessage(this.#exitColor)
+        this.#view.printExitMessage(this.#exitColor)
       }
 
       const input = this.#promptUser()
@@ -72,7 +78,7 @@ export class InterfaceCreator {
       const chosenAlternative = alternatives[input - 1]
       return chosenAlternative
     } else {
-      this.#printFormInvalidOption()
+      this.#view.printFormInvalidOption()
     }
   }
 
@@ -90,8 +96,8 @@ export class InterfaceCreator {
         const question = Object.keys(questions[i])[0]
         const arrayOfAlternatives = Object.values(questions[i])[0]
 
-        this.#printFormQuestion(question)
-        this.#printFormAlternatives(arrayOfAlternatives)
+        this.#view.printFormQuestion(question, this.#formColor)
+        this.#view.printFormAlternatives(arrayOfAlternatives)
 
         const input = await this.#promptUserWaitForInput()
         const chosenAlternative = this.#checkWhichFormAlternative(
@@ -100,7 +106,7 @@ export class InterfaceCreator {
         )
         answers[question] = chosenAlternative
       } else {
-        this.#printFormQuestion(questions[i])
+        this.#view.printFormQuestion(questions[i], this.#formColor)
         const input = await this.#promptUserWaitForInput()
         answers[questions[i]] = await input
       }
@@ -117,7 +123,7 @@ export class InterfaceCreator {
    * @param {string} color - The color that the message should have.
    */
   createPrompt(message, functionality, color) {
-    this.#printPromptMessage(this.#getColorCode(color), message)
+    this.#view.printPromptMessage(this.#getColorCode(color), message)
     const input = this.#promptUser()
     functionality(input)
   }
@@ -138,7 +144,7 @@ export class InterfaceCreator {
    * @param {object} functionality - An object of numbered keys corresponding to the view with functions as values.
    */
   createSubMenu(view, functionality) {
-    this.#printSubMenu(view)
+    this.#view.printSubMenu(view)
 
     if (this.#returnToMenuOption) {
       this.#showReturnToMenuAndExitOption()
@@ -249,9 +255,9 @@ export class InterfaceCreator {
    */
   #createMenu() {
     try {
-      this.#printMenu(this.#menuColor, this.#menu)
+      this.#view.printMenu(this.#menuColor, this.#menu)
     } catch (error) {
-      this.#printNoMenuError()
+      this.#view.printNoMenuError()
     }
   }
 
@@ -281,10 +287,10 @@ export class InterfaceCreator {
    */
   #showReturnToMenuAndExitOption() {
     if (this.#returnToMenuColor) {
-      this.#printReturnToMenuAndExitWithColor(this.#returnToMenuColor)
+      this.#view.printReturnToMenuAndExitWithColor(this.#returnToMenuColor)
     } else {
-      this.#printReturnToMenuOption()
-      this.#printExitApplicationOption()
+      this.#view.printReturnToMenuOption()
+      this.#view.printExitApplicationOption()
     }
   }
 
@@ -301,7 +307,7 @@ export class InterfaceCreator {
         menuFunctionToCall()
       }
     } catch (error) {
-      this.#printNoMenuFunctionality()
+      this.#view.printNoMenuFunctionality()
     }
   }
 }
