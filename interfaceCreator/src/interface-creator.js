@@ -1,6 +1,6 @@
 import prompt from "prompt-sync"
 import process from "node:process"
-import { interfaceView } from "./interface-view"
+import { interfaceView } from "./interface-view.js"
 
 /**
  * Creates an customizable interface.

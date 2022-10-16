@@ -1,6 +1,6 @@
 {
   "name": "@jacoobanderson/interface-creator",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "A module that helps in creating a terminal user interface",
   "main": "src/interface-creator.js",
   "type": "module",
