@@ -91,12 +91,7 @@ export class InterfaceCreator {
         const question = Object.keys(questions[i])[0]
         const arrayOfAlternatives = Object.values(questions[i])[0]
 
-        if (this.#formColor) {
-          console.log(this.#formColor, question)
-        } else {
-          console.log(question)
-        }
-
+        this.#printFormQuestion(question)
         this.#printFormAlternatives(arrayOfAlternatives)
 
         const input = await this.#promptUserWaitForInput()
@@ -106,17 +101,21 @@ export class InterfaceCreator {
         )
         answers[question] = chosenAlternative
       } else {
-        if (this.#formColor) {
-          console.log(this.#formColor, questions[i])
-        } else {
-          console.log(questions[i])
-        }
+        this.#printFormQuestion(questions[i])
         const input = await this.#promptUserWaitForInput()
         answers[questions[i]] = await input
       }
     }
     this.start()
     return answers
+  }
+
+  #printFormQuestion(question) {
+    if (this.#formColor) {
+      console.log(this.#formColor, question)
+    } else {
+      console.log(question)
+    }
   }
 
   #printFormAlternatives(alternatives) {
@@ -133,9 +132,13 @@ export class InterfaceCreator {
    * @param {string} color - The color that the message should have.
    */
   createPrompt(message, functionality, color) {
-    console.log(this.#getColorCode(color), message)
+    this.#printPromptMessage(color, message)
     const input = this.#promptUser()
     functionality(input)
+  }
+
+  #printPromptMessage(color, message) {
+    console.log(this.#getColorCode(color), message)
   }
 
   /**
@@ -182,6 +185,7 @@ export class InterfaceCreator {
   setColor(section, color) {
     const colorCode = this.#getColorCode(color)
     section.toLowerCase()
+  
     if (section === "menu") {
       this.#menuColor = colorCode
     }
@@ -325,15 +329,19 @@ export class InterfaceCreator {
    */
   #showReturnToMenuAndExitOption() {
     if (this.#returnToMenuColor) {
-      console.log(
-        this.#returnToMenuColor,
-        "\nTo return to the main menu press enter."
-      )
-      console.log(this.#returnToMenuColor, "To exit the application enter Q.")
+      this.#printReturnToMenuAndExitWithColor()
     } else {
       this.#printReturnToMenuOption()
       this.#printExitApplicationOption()
     }
+  }
+
+  #printReturnToMenuAndExitWithColor() {
+    console.log(
+      this.#returnToMenuColor,
+      "\nTo return to the main menu press enter."
+    )
+    console.log(this.#returnToMenuColor, "To exit the application enter Q.")
   }
 
 
