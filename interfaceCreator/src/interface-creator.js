@@ -22,7 +22,7 @@ export class InterfaceCreator {
       this.#createMenu()
 
       if (this.#exitOption) {
-        this.#showExitMessage()
+        this.#printExitMessage()
       }
 
       const input = this.#promptUser()
@@ -72,8 +72,7 @@ export class InterfaceCreator {
       const chosenAlternative = alternatives[input - 1]
       return chosenAlternative
     } else {
-      console.log("That is an invalid option.")
-      return "Invalid"
+      this.#printFormInvalidOption()
     }
   }
 
@@ -110,20 +109,6 @@ export class InterfaceCreator {
     return answers
   }
 
-  #printFormQuestion(question) {
-    if (this.#formColor) {
-      console.log(this.#formColor, question)
-    } else {
-      console.log(question)
-    }
-  }
-
-  #printFormAlternatives(alternatives) {
-    alternatives.forEach((element, index) => {
-      console.log(index + 1 + ". " + element)
-    })
-  }
-
   /**
    * Creates a user prompt.
    *
@@ -135,10 +120,6 @@ export class InterfaceCreator {
     this.#printPromptMessage(color, message)
     const input = this.#promptUser()
     functionality(input)
-  }
-
-  #printPromptMessage(color, message) {
-    console.log(this.#getColorCode(color), message)
   }
 
   /**
@@ -171,11 +152,6 @@ export class InterfaceCreator {
     this.#handleMenuInput(functionality, input)
   }
 
-  #printSubMenu(view) {
-    for (const [key, value] of Object.entries(view)) {
-      console.log(key + ". " + value + ".")
-    }
-  }
   /**
    * Sets the color of a certain section.
    *
@@ -185,7 +161,7 @@ export class InterfaceCreator {
   setColor(section, color) {
     const colorCode = this.#getColorCode(color)
     section.toLowerCase()
-  
+
     if (section === "menu") {
       this.#menuColor = colorCode
     }
@@ -214,16 +190,6 @@ export class InterfaceCreator {
     this.#returnToMenuOption = true
   }
 
-  /**
-   * Shows an exit message and sets the color of that message.
-   */
-  #showExitMessage() {
-    if (this.#exitColor) {
-      console.log(this.#exitColor, "To exit the program enter Q")
-    } else {
-      console.log("To exit the program enter Q")
-    }
-  }
 
   /**
    * Exits the application if Q is entered.
@@ -289,20 +255,6 @@ export class InterfaceCreator {
     }
   }
 
-  #printMenu() {
-    for (const [key, value] of Object.entries(this.#menu)) {
-      if (this.#menuColor) {
-        console.log(this.#menuColor, +key + ". " + value + ".")
-      } else {
-        console.log(key + ". " + value + ".")
-      }
-    }
-  }
-
-  #printNoMenuError() {
-    console.log("No menu has been created.")
-  }
-
   /**
    * Prompts a user.
    *
@@ -334,28 +286,6 @@ export class InterfaceCreator {
       this.#printReturnToMenuOption()
       this.#printExitApplicationOption()
     }
-  }
-
-  #printReturnToMenuAndExitWithColor() {
-    console.log(
-      this.#returnToMenuColor,
-      "\nTo return to the main menu press enter."
-    )
-    console.log(this.#returnToMenuColor, "To exit the application enter Q.")
-  }
-
-
-
-  #printReturnToMenuOption() {
-    console.log("\nTo return to the main menu press enter.")
-  }
-
-  #printExitApplicationOption() {
-    console.log("To exit the application enter Q.")
-  }
-
-  #printNoMenuFunctionality() {
-    console.log("No menu functionality has been assigned.")
   }
 
   /**
