@@ -4,9 +4,9 @@ export class interfaceView {
     return "Invalid"
   }
 
-  printFormQuestion(question) {
-    if (this.#formColor) {
-      console.log(this.#formColor, question)
+  printFormQuestion(question, color) {
+    if (color) {
+      console.log(color, question)
     } else {
       console.log(question)
     }
@@ -19,7 +19,7 @@ export class interfaceView {
   }
 
   printPromptMessage(color, message) {
-    console.log(this.#getColorCode(color), message)
+    console.log(color, message)
   }
 
   printSubMenu(view) {
@@ -31,18 +31,18 @@ export class interfaceView {
   /**
    * Shows an exit message and sets the color of that message.
    */
-  printExitMessage() {
-    if (this.#exitColor) {
-      console.log(this.#exitColor, "To exit the program enter Q")
+  printExitMessage(color) {
+    if (color) {
+      console.log(color, "To exit the program enter Q")
     } else {
       console.log("To exit the program enter Q")
     }
   }
 
-  printMenu() {
-    for (const [key, value] of Object.entries(this.#menu)) {
-      if (this.#menuColor) {
-        console.log(this.#menuColor, +key + ". " + value + ".")
+  printMenu(color, menu) {
+    for (const [key, value] of Object.entries(menu)) {
+      if (color) {
+        console.log(color, +key + ". " + value + ".")
       } else {
         console.log(key + ". " + value + ".")
       }
@@ -53,12 +53,12 @@ export class interfaceView {
     console.log("No menu has been created.")
   }
 
-  printReturnToMenuAndExitWithColor() {
+  printReturnToMenuAndExitWithColor(color) {
     console.log(
-      this.#returnToMenuColor,
+      color,
       "\nTo return to the main menu press enter."
     )
-    console.log(this.#returnToMenuColor, "To exit the application enter Q.")
+    console.log(color, "To exit the application enter Q.")
   }
 
   printReturnToMenuOption() {

@@ -22,7 +22,7 @@ export class InterfaceCreator {
       this.#createMenu()
 
       if (this.#exitOption) {
-        this.#printExitMessage()
+        this.#printExitMessage(this.#exitColor)
       }
 
       const input = this.#promptUser()
@@ -117,7 +117,7 @@ export class InterfaceCreator {
    * @param {string} color - The color that the message should have.
    */
   createPrompt(message, functionality, color) {
-    this.#printPromptMessage(color, message)
+    this.#printPromptMessage(this.#getColorCode(color), message)
     const input = this.#promptUser()
     functionality(input)
   }
@@ -249,7 +249,7 @@ export class InterfaceCreator {
    */
   #createMenu() {
     try {
-      this.#printMenu()
+      this.#printMenu(this.#menuColor, this.#menu)
     } catch (error) {
       this.#printNoMenuError()
     }
@@ -281,7 +281,7 @@ export class InterfaceCreator {
    */
   #showReturnToMenuAndExitOption() {
     if (this.#returnToMenuColor) {
-      this.#printReturnToMenuAndExitWithColor()
+      this.#printReturnToMenuAndExitWithColor(this.#returnToMenuColor)
     } else {
       this.#printReturnToMenuOption()
       this.#printExitApplicationOption()
